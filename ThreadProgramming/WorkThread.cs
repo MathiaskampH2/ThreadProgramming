@@ -23,17 +23,7 @@ namespace ThreadProgramming
                 Console.WriteLine("C#-trådning er nemt!");
             }
 
-        }
-
-        public void WorkThreadPrintFiveTimesTwo()
-        {
-            for (int i = 0; i < 5; i++)
-            {
-                Thread.Sleep(1000);
-                Console.WriteLine(" Også med flere tråde...");
-            }
-        }
-        #endregion
+        
     }
 #endregion
     }
