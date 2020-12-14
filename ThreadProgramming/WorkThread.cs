@@ -5,28 +5,36 @@ using System.Threading;
 
 namespace ThreadProgramming
 {
-    #region Øvelse 0
+    #region øvelse 1
 
     /// <summary>
     /// class WorkThread has method to print out something to the console.
     /// </summary>
     public class WorkThread
     {
-        public void WorkThreadFunction()
+      
+        #region Øvelse 1
+        public void WorkThreadPrintFiveTimes()
         {
-            //for (int i = 0; i < 5; i++)
-            //{
-            //    Console.WriteLine("Simple thread");
-            //}
+            for (int i = 0; i < 5; i++)
+            {
+                // thread.Sleep 1secound 
+                Thread.Sleep(1000);
+                Console.WriteLine("C#-trådning er nemt!");
+            }
 
-            Console.WriteLine($"first thread called, name : {Thread.CurrentThread.Name}");
         }
 
-        public void WorkThreadTwo()
+        public void WorkThreadPrintFiveTimesTwo()
         {
-            Console.WriteLine($"secound thread called, name :{Thread.CurrentThread.Name}");
+            for (int i = 0; i < 5; i++)
+            {
+                Thread.Sleep(1000);
+                Console.WriteLine(" Også med flere tråde...");
+            }
         }
         #endregion
-
+    }
+#endregion
     }
 }
