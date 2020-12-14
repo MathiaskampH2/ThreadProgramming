@@ -1,36 +1,54 @@
 ﻿using System;
+using System.Data.SqlTypes;
 using System.Diagnostics.PerformanceData;
 using System.Security.Cryptography;
 using System.Threading;
 
 namespace ThreadProgramming
 {
-    #region øvelse 2
+    #region øvelse 3
 
     /// <summary>
     /// class WorkThread has method to print out something to the console.
     /// </summary>
     public class WorkThread
     {
-      
+        
+        // gets randomNumber between -20 and 120
 
-        public void WorkThreadPrintFiveTimes()
+        public int RandomTemperature()
         {
-            for (int i = 0; i < 5; i++)
-            {
-                // thread.Sleep 1secound 
-                Thread.Sleep(1000);
-                Console.WriteLine("C#-trådning er nemt!");
-            }
+            Random rng = new Random();
+            int temperature = 0;
+            temperature = rng.Next(-20, 120);
+
+            return temperature;
 
         }
 
-        public void WorkThreadPrintFiveTimesTwo()
+        // checks if the randomNumber is within 0-100 
+        public void CheckOnTemperature()
         {
-            for (int i = 0; i < 5; i++)
+            
+            int counter = 0;
+
+            while (counter < 3)
             {
-                Thread.Sleep(1000);
-                Console.WriteLine(" Også med flere tråde...");
+                int temperature = RandomTemperature();
+
+                if (temperature > 100 || temperature < 0)
+                {
+                    counter++;
+                    Console.WriteLine($"Temperature is not within the range of 0 - 100 degrees: temp:{temperature} alert count : {counter}");
+
+                }
+
+                else
+                {
+                    Console.WriteLine($"Temperature is fine : {temperature}");
+                }
+
+                Thread.Sleep(2000);
             }
         }
         #endregion
