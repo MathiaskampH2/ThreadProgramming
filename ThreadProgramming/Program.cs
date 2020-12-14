@@ -18,14 +18,12 @@ namespace ThreadProgramming
 
             //create new Thread and new ThreadStart that class WorkThreadFunction method from WorkThread class.
             Thread tFirst = new Thread(new ThreadStart(wt.WorkThreadFunction));
-
-            tFirst.Name = "Work thread 1";
+            Thread tSecound = new Thread(new ThreadStart(wt.WorkThreadTwo));
             // starts the Thread
             tFirst.Start();
-            tFirst.Join();
-            Thread tSecound = new Thread(new ThreadStart(wt.WorkThreadTwo));
-            tSecound.Name = "Work thread 2";
             tSecound.Start();
+            tFirst.Join();
+            tSecound.join();
             Console.Read();
 
             #endregion
