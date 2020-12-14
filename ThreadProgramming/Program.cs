@@ -11,23 +11,23 @@ namespace ThreadProgramming
     {
         static void Main(string[] args)
         {
-            #region Øvelse 0
+            #region Øvelse 2
 
             //create new object of WorkThread class
             WorkThread wt = new WorkThread();
 
             //create new Thread and new ThreadStart that class WorkThreadFunction method from WorkThread class.
-            Thread tFirst = new Thread(new ThreadStart(wt.WorkThreadFunction));
+            Thread tFirst = new Thread(new ThreadStart(wt.WorkThreadPrintFiveTimes));
+            Thread tSecound = new Thread(new ThreadStart(wt.WorkThreadPrintFiveTimesTwo));
+          
 
-            tFirst.Name = "Work thread 1";
-            // starts the Thread
+            // starts the Threads
             tFirst.Start();
-            tFirst.Join();
-            Thread tSecound = new Thread(new ThreadStart(wt.WorkThreadTwo));
-            tSecound.Name = "Work thread 2";
             tSecound.Start();
+            // joins them together so that tSecond runs when tFirst is done
+            tFirst.Join();
+            tSecound.Join();
             Console.Read();
-
             #endregion
         }
     }
