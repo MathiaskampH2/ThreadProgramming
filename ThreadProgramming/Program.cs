@@ -9,26 +9,38 @@ namespace ThreadProgramming
 {
     class Program
     {
+        static char ch = '*';
         static void Main(string[] args)
         {
-            #region Øvelse 0
+            // create printer thread
+            Thread printer = new Thread(ThreadPrinter);
+           
+            // start printer thread
+            printer.Start();
 
-            //create new object of WorkThread class
-            WorkThread wt = new WorkThread();
+            Thread reader = new Thread(ThreadReader);
+            reader.Start();
 
-            //create new Thread and new ThreadStart that class WorkThreadFunction method from WorkThread class.
-            Thread tFirst = new Thread(new ThreadStart(wt.WorkThreadFunction));
 
-            tFirst.Name = "Work thread 1";
-            // starts the Thread
-            tFirst.Start();
-            tFirst.Join();
-            Thread tSecound = new Thread(new ThreadStart(wt.WorkThreadTwo));
-            tSecound.Name = "Work thread 2";
-            tSecound.Start();
-            Console.Read();
+        }
 
-            #endregion
+        // ThreadPrinter method that prints the char ch.
+        static void ThreadPrinter()
+        {
+            while (true)
+            {
+                Console.Write(ch);
+                Thread.Sleep(100);
+            }
+        }
+
+        // threadReader method that writes to char ch.
+        static void ThreadReader()
+        {
+            while (true) 
+            {
+                ch = Console.ReadKey().KeyChar;
+            }
         }
     }
 }
